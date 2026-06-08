@@ -15,7 +15,7 @@ from peft import LoraConfig
 
 # ── Hiperparámetros ──────────────────────────────────────────
 MODEL_NAME    = "unsloth/Nemotron-3-Nano-30B-A3B"  # versión optimizada de Unsloth
-DATA_PATH     = "/workspace/data/training_data.jsonl"
+DATA_PATH = "/workspace/data/cot_v2_combined.jsonl"
 OUTPUT_DIR    = "/workspace/adapter"
 LORA_RANK     = 36
 MAX_SEQ_LEN   = 1280
