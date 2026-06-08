@@ -17,8 +17,8 @@ from peft import LoraConfig
 MODEL_NAME    = "unsloth/Nemotron-3-Nano-30B-A3B"  # versión optimizada de Unsloth
 DATA_PATH     = "/workspace/data/training_data.jsonl"
 OUTPUT_DIR    = "/workspace/adapter"
-LORA_RANK     = 16
-MAX_SEQ_LEN   = 1024
+LORA_RANK     = 36
+MAX_SEQ_LEN   = 1280
 NUM_EPOCHS    = 2
 BATCH_SIZE    = 1
 GRAD_ACCUM    = 4
@@ -46,7 +46,7 @@ model, tokenizer = FastLanguageModel.from_pretrained(
 model = FastLanguageModel.get_peft_model(
     model,
     r=LORA_RANK,
-    target_modules=["q_proj", "k_proj", "v_proj", "o_proj"],
+    target_modules="all-linear",
     lora_alpha=LORA_RANK,
     lora_dropout=0,
     bias="none",

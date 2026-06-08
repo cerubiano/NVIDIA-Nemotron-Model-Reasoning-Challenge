@@ -3,10 +3,16 @@
 # Script 4: Empaquetar adapter para submission en Kaggle
 # ============================================================
 
-import os, zipfile
+import os, zipfile, shutil
 
 ADAPTER_DIR = "/workspace/adapter"
 ZIP_PATH    = "/workspace/submission.zip"
+
+# Copiar trainer_state.json si existe
+trainer_state = "/workspace/trainer_state.json"
+if os.path.exists(trainer_state):
+    shutil.copy(trainer_state, ADAPTER_DIR)
+    print("✅ trainer_state.json incluido")
 
 # Verificar archivos requeridos
 required = ["adapter_config.json", "adapter_model.safetensors"]
