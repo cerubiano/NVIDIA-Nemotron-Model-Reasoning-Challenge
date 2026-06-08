@@ -50,7 +50,7 @@ model = FastLanguageModel.get_peft_model(
     lora_alpha=LORA_RANK,
     lora_dropout=0,
     bias="none",
-    use_gradient_checkpointing="unsloth",
+    use_gradient_checkpointing=False,
 )
 model.print_trainable_parameters()
 
@@ -90,7 +90,7 @@ training_args = SFTConfig(
     dataset_text_field="text",
     max_length=MAX_SEQ_LEN,
     packing=True,  # Mejora eficiencia
-    gradient_checkpointing=True,
+    gradient_checkpointing=False,
     gradient_checkpointing_kwargs={"use_reentrant": False},
 )
 
