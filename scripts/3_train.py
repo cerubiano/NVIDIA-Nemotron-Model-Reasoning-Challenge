@@ -18,7 +18,7 @@ MODEL_NAME    = "unsloth/Nemotron-3-Nano-30B-A3B"  # versión optimizada de Unsl
 DATA_PATH     = "/workspace/data/training_data.jsonl"
 OUTPUT_DIR    = "/workspace/adapter"
 LORA_RANK     = 16
-MAX_SEQ_LEN   = 2048
+MAX_SEQ_LEN   = 1024
 NUM_EPOCHS    = 2
 BATCH_SIZE    = 1
 GRAD_ACCUM    = 4
@@ -89,7 +89,7 @@ training_args = SFTConfig(
     report_to="none",
     dataset_text_field="text",
     max_length=MAX_SEQ_LEN,
-    packing=True,  # Mejora eficiencia
+    packing=False,  # Mejora eficiencia
     gradient_checkpointing=False,
     gradient_checkpointing_kwargs={"use_reentrant": False},
 )
